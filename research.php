@@ -38,25 +38,62 @@
     </header>
 
 
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
-            <div class="col-3" style="border: solid 2px;">
-                <div class="m2">
-                    <img src="https://avatars.preply.com/i/logos/i/logos/avatar_n64m8bvx2.jpg" alt="">
-                    <p>Nome Teacher</p>
-                    <img src="./svg/cercificated_incon.svg" alt="">
-                    <img src="https://static.preply.com/groot/country_flags/4x3/pl.svg" alt="">
-                    <img src="./svg/language_icon.svg" alt="">
-                    <p>Language Mother</p>
-                    <div>
-                        <p>Price</p>
-                        <p>per lesson</p>
+            <div class="col">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col-4" style="border: solid 2px; border-radius: 15px;">
+                <div class="my-3">
+                    <div class="d-flex gap-3 ">
+                        <div>
+                            <img src="https://avatars.preply.com/i/logos/i/logos/avatar_n64m8bvx2.jpg" alt="teacher" style="width: 110px; border-radius:3px">
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center gap-1">
+                                <p class="m-0" style="font-weight: 500; font-size: 1.5rem">Kacper M.</p>
+                                <img src="./svg/cercificated_incon.svg" alt="" style="width: 20px; height: 15px; ">
+                                <img src="https://static.preply.com/groot/country_flags/4x3/pl.svg" alt="flag" style="width: 15px; height: 10px; ">
+                            </div>
+                            <div class="d-flex align-sefl-center gap-1">
+                                <img src="./svg/language_icon.svg" alt="">
+                                <p class="m-0">Polish (Native)</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div>
+                                    <p class="m-0" style="font-size: 1.2rem; font-weight: 500 ;">€65</p>
+                                    <p class="m-0" style="font-size: 0.8rem; color:gray">per lesson</p>
+                                </div>
+                                <div>
+                                    <div class="d-flex gap-1">
+                                        <img src="./svg/star_icon.svg" alt="">
+                                        <p class="m-0" style="font-size: 1.3rem; font-weight: 500 ;">5</p>
+                                    </div>
+                                    <p class="m-0" style="font-size: 0.8rem; color:gray">80 reviews</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p>Text about her/him.......</p>
-                    <a href="#">Read more</a>
-                    <button>
-                        <a href="#">Book trial lesson</a>
-                    </button>
+
+                    <div>
+                        <div class="my-3">
+                            <p class="m-0">I am Kacper, a passionate English tutor born in Poland. In addition to teaching, I am a singer and music producer, incorporating creativity into my lessons... </p>
+                        </div>
+                        <a href="#">Read more</a>
+                    </div>
+                    <div class="mt-2">
+                        <button type="button" class="btn btn-info">
+                            <a href="#" style="text-decoration: none;" style="color:black !important">Book trial lesson</a>
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
