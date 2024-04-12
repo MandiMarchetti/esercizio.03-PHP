@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" 415'<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be a Teacher!</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -24,7 +23,7 @@
                             <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Find a Teacher</a>
+                            <a class="nav-link" href="./research.php">Find a Teacher</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
@@ -64,34 +63,53 @@
     </div>
 
 
+    <?php
 
-    <div class="container mt-4">
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $con = mysqli_connect('localhost', 'root', '', 'teacher_database');
+
+        $stmt = $con->prepare("INSERT INTO teachers (ID, fldName, fldEmail, fldComment) VALUES (NULL, ?, ?, ?)");
+        $stmt->bind_param("sss", $txtName, $txtEmail, $txtComment);
+
+        $txtName = $_POST['txtName'];
+        $txtEmail = $_POST['txtEmail'];
+        $txtComment = $_POST['txtComment'];
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "Contact Records Inserted";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+        mysqli_close($con);
+    }
+    ?>
+
+    <div class="container my-4">
         <div class="row d-flex justify-content-center">
             <div class="col-4 ">
-                <form>
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <div class="mb-3">
                         <label for="name" class="form-label">Tell us your name...</label>
-                        <input type="name" class="form-control" id="name" aria-describedby="emailHelp">
-
+                        <input type="text" class="form-control" name="txtName" id="txtName" aria-describedby="emailHelp" placeholder="Ex: Livia Garden">
+                        <div id="emailHelp" class="form-text">Use just letters, ok?</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">What's your email?</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <label for="email" class="form-label">What's your email?</label>
+                        <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Ex: example@gmail.com">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Tell us a little bit about you...</label>
-                        <input type="text" class="form-control" id="text">
-                        <div id="emailHelp" class="form-text">You have 1000 caracters available...</div>
+                        <label for="comments" class="form-label">Tell us a little bit about you...</label>
+                        <input type="text" class="form-control" name="txtComment" id="txtComment" placeholder="Hello! I am...">
+                        <div id="emailHelp" class="form-text">You have 1000 characters available...</div>
                     </div>
                     <!-- <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> -->
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
                     <button type="submit" class="btn btn-info">Submit</button>
                 </form>
             </div>
